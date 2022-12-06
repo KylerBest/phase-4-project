@@ -5,6 +5,7 @@ import Header from './Header';
 import HomePage from './HomePage';
 import LogInForm from './LogInForm';
 import SignUpForm from './SignUpForm';
+import ProfilePage from './ProfilePage';
 
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
     fetch("/me").then(r => {
       if(r.ok) {
         r.json().then(onLogin)
+      }else{
+        nav('/login')
       }
     })
   }, [])
@@ -43,9 +46,10 @@ function App() {
       setSearch={setSearch}
       user={user}
       logout={logout}
-    /> : null}
+    /> : <></>}
     <div className='body'>
       <Routes>
+
         <Route
           path='/login'
           element={
@@ -54,14 +58,24 @@ function App() {
             />
           }
         />  
+
         <Route
           path='/create_account'
           element={
-            <SignUpForm 
+            <SignUpForm
               onLogin={onLogin}
             />
           }
         />
+
+        <Route 
+          path='/profile'
+          element={<ProfilePage
+            user={user}
+            setUser={setUser}
+          />}
+        />
+
         <Route 
           path='/home'
           element={
@@ -70,10 +84,11 @@ function App() {
             />
         }
         />
+
         <Route 
           path='/'
           element={
-            <Navigate to={user ? "/home" : "/login"}/>
+            <Navigate to="/login"/>
         }
         />
       </Routes>

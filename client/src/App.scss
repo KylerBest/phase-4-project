@@ -9,8 +9,11 @@
   --clr-primary-medium: hsl(209, 100%, 35%);
   --clr-primary-dark: hsl(205, 94%, 12%);
 
-  --background-gradient-faint: linear-gradient(180deg, rgb(248, 233, 223) 0%, rgb(173, 211, 223) 100%);
-  --background-gradient-saturated: linear-gradient(180deg, rgb(255, 204, 169) 0%, rgb(147, 212, 231) 100%);
+  --clr-translucent-white: rgba(255, 255, 255, 0.26);
+  --clr-translucent-black: rgba(0, 0, 0, 0.26);
+
+  --background-gradient-faint: linear-gradient(60deg, rgba(255, 203, 169, 0.65) 0%, rgba(147, 212, 231, 0.65) 100%);
+  --background-gradient-saturated: linear-gradient(60deg, rgb(255, 204, 169) 0%, rgb(147, 212, 231) 100%);
 }
 
 
@@ -55,42 +58,68 @@ white-space: nowrap !important;
 border: 0 !important;
 }
 
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.off-screen{
+  transform: translateX(-100%);
+}
+
 // normal classes
 
 header{
+  font-family: 'Nunito', sans-serif;
   position: sticky;
   top: 0;
   border-bottom: 5px black;
-  background: rgba(255, 255, 255, 0.349);
+  background: var(--clr-translucent-white);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  border: black 1px solid;
   width: 100%;
   max-height: 4rem;
   
-  .prof-pic-container{
-    min-width: 25px;
-    .prof-pic{
-      position: absolute;
-      right: 0.5rem;
-      top: 0.5rem;
-      border-radius: 50%;
-      border: 1px black solid;
-      width: 5rem;
+  .logo-container{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    .logo{
+      font-family: 'Pacifico', cursive;
+      font-size: xx-large;
+      text-decoration: none;
+      color: var(--clr-primary-dark);
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
-  
-  .primary-nav{
-    margin-top: 45px;
+
+  .prof-pic{
+    display: block;
+    position: absolute;
+    right: 0.25rem;
+    top: 0.25rem;
+    border-radius: 50%;
+    width: 7rem;
+    height: 7rem;
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.486);
+    object-fit: cover;
   }
   
   .search-bar{
+    position: absolute;
     display: flex;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: var(--clr-neutral-100);
     border-radius: 50px;
-    padding: 0.1rem;
+    padding: 0 0.1rem;
     
     button{
       cursor: pointer;
@@ -123,47 +152,107 @@ header{
 
   }
   
-  .mobile-nav-toggle{
-    cursor: pointer;
+  .nav-toggle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .2rem;
     background: transparent;
     border: 0;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.1);
+    transition: 100ms ease-in-out;
+    &:hover{
+      cursor: pointer;
+      box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.5);
+      background: rgba(196, 196, 196, 0.1);
+      transition: 100ms ease-in-out;
+    }
+  }
+
+  .nav-menu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    font-size: larger;
+    background: var(--background-gradient-saturated);
+    box-shadow: .25rem .25rem 1rem rgba(0, 0, 0, 0.377);
+    border-radius: 0 20px 20px 0;
+    padding: .25rem;
+    transform: translateX(1);
+    transition: 250ms ease-in-out;
+
+    &>*{
+      padding: .5rem 3rem;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.158);
+      color: var(--clr-primary-medium);
+
+      &:hover{
+        cursor: pointer;
+        background: var(--clr-translucent-white);
+      }
+
+      &:first-child{
+        border-radius: 0 20px 0 0;
+      }
+
+      &:last-child{
+        border-bottom: none;
+        border-radius: 0 0 20px 0;
+      }
+    }
+
   }
 
 }
 
-.body{
+.App{
   width: 100%;
-  height: 100%;
+  height: fit-content;
+  min-height: 100vh;
   position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background: var(--background-gradient-faint);
   
-  .login{
-    padding: 4rem 10rem;
-    border-radius: 20px;
+  .body{
+    font-family: 'Cabin', sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background: var(--background-gradient-saturated);
-    box-shadow: 0 0 3rem 1rem rgba(0, 0, 0, 0.267);
-  
+    flex-grow: 1;
     h1{
-      font-size: xxx-large;
+      font-size: 30px;
       font-weight: bolder;
     }
+
+    .card{
+      margin: 2rem;
+      padding: 4rem 10rem;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: var(--background-gradient-saturated);
+      box-shadow: 0 0 3rem 1rem rgba(0, 0, 0, 0.267);
+    }
     
-    .login-form{
+    form{
       padding: .25rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: .75rem;
-  
+
+      textarea,
       input[type="text"],
       input[type="password"]{
         font-size: larger;
@@ -174,7 +263,6 @@ header{
         &:focus{
           outline-color: var(--clr-primary-light);
         }
-
       }
 
       .errors-container{
@@ -200,7 +288,6 @@ header{
       }
 
       .submit-button{
-        display: inline-block;
         font-size: x-large;
         font-weight: bolder;
         padding: 0.5rem;
@@ -217,13 +304,53 @@ header{
         }
       }
     }
-    
-  }
-  
-  
-  .home-page{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+    .profile-page{
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      .profile-page-pic{
+        width: 15rem;
+        height: 15rem;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.486);
+      }
+
+      form{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2rem;
+        label{
+          flex: 1 1 100%;
+          border-bottom: 2px solid rgba(0, 0, 0, 0.192);
+          font-size: larger;
+          font-weight: bold;
+        }
+        textarea{
+          flex: 1 1 100%;
+          resize: vertical;
+          min-height: 2.5rem;
+          height: 10rem;
+          max-height: 15rem;
+        }
+        input[type="text"]{
+          display: inline;
+          flex: 1 1 100%;
+        }
+        .submit-button{
+          flex: 1 1 0;
+        }
+      }
+    }
+
+    .home-page{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }

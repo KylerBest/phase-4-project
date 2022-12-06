@@ -1,9 +1,9 @@
-import React from "react";
 
 function HomePage({user}){
+
     return (
-        <div className="home-page">
-            <h1>Welcome, {user.username}</h1>
+        <div className="home-page wrapper">
+            <h1>{user ? `Welcome, ${user.username}` : `Loading...`}</h1>
         </div>
     )
 }
