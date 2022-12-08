@@ -12,6 +12,9 @@ function App() {
   const nav = useNavigate()
   const [search, setSearch] = useState('')
   const [user, setUser] = useState(null)
+  const [feed, setFeed] = useState([])
+  const profilePicture = user && user.profile_picture_url ? user.profile_picture_url : `${process.env.PUBLIC_URL}/dog_prof_pic.jpg`
+
 
   useEffect(() => {
     fetch("/me").then(r => {
@@ -19,6 +22,11 @@ function App() {
         r.json().then(onLogin)
       }else{
         nav('/login')
+      }
+    })
+    fetch("/posts").then(r =>{
+      if(r.ok){
+        r.json().then(setFeed)
       }
     })
   }, [])
@@ -46,6 +54,7 @@ function App() {
       setSearch={setSearch}
       user={user}
       logout={logout}
+      profilePicture={profilePicture}
     /> : <></>}
     <div className='body'>
       <Routes>
@@ -73,6 +82,7 @@ function App() {
           element={<ProfilePage
             user={user}
             setUser={setUser}
+            profilePicture={profilePicture}
           />}
         />
 
@@ -81,6 +91,9 @@ function App() {
           element={
             <HomePage
               user={user}
+              profilePicture={profilePicture}
+              feed={feed}
+              setFeed={setFeed}
             />
         }
         />

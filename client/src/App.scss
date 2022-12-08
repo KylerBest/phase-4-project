@@ -10,10 +10,11 @@
   --clr-primary-dark: hsl(205, 94%, 12%);
 
   --clr-translucent-white: rgba(255, 255, 255, 0.26);
-  --clr-translucent-black: rgba(0, 0, 0, 0.26);
+  --clr-translucent-black: rgba(0, 0, 0, 0.05);
 
-  --background-gradient-faint: linear-gradient(60deg, rgba(255, 203, 169, 0.65) 0%, rgba(147, 212, 231, 0.65) 100%);
-  --background-gradient-saturated: linear-gradient(60deg, rgb(255, 204, 169) 0%, rgb(147, 212, 231) 100%);
+  --text-field-background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(235, 235, 235) 100%);
+  --background-gradient-faint: linear-gradient(60deg, rgba(255, 199, 162, 0.65) 0%, rgba(147, 212, 231, 0.65) 100%);
+  --background-gradient-saturated: linear-gradient(60deg, rgb(255, 199, 162) 0%, rgb(147, 212, 231) 100%);
 }
 
 
@@ -59,6 +60,7 @@ border: 0 !important;
 }
 
 .wrapper{
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,6 +73,17 @@ border: 0 !important;
 }
 
 // normal classes
+
+.logo{
+  font-family: 'Pacifico', cursive;
+  font-size: 2.25rem !important;
+  font-weight: lighter !important;
+  text-decoration: none !important;
+  color: var(--clr-primary-dark) !important;
+  &:hover{
+    cursor: pointer;
+  }
+}
 
 header{
   font-family: 'Nunito', sans-serif;
@@ -89,15 +102,6 @@ header{
     display: flex;
     align-items: center;
     gap: 1rem;
-    .logo{
-      font-family: 'Pacifico', cursive;
-      font-size: xx-large;
-      text-decoration: none;
-      color: var(--clr-primary-dark);
-      &:hover{
-        cursor: pointer;
-      }
-    }
   }
 
   .prof-pic{
@@ -222,6 +226,7 @@ header{
   background: var(--background-gradient-faint);
   
   .body{
+    width: 100%;
     font-family: 'Cabin', sans-serif;
     display: flex;
     flex-direction: column;
@@ -233,8 +238,11 @@ header{
     }
 
     .card{
+      width: 85%;
+      max-width: 50rem;
+      min-width: 30rem;
       margin: 2rem;
-      padding: 4rem 10rem;
+      padding: 4rem 4rem;
       border-radius: 20px;
       display: flex;
       flex-direction: column;
@@ -243,14 +251,29 @@ header{
       background: var(--background-gradient-saturated);
       box-shadow: 0 0 3rem 1rem rgba(0, 0, 0, 0.267);
     }
+
+    .login{
+      min-width: 30rem;
+      max-width: 40rem;
+      width: 50%;
+      input{
+        width: 75% !important;
+      }
+    }
     
     form{
+      padding: 1rem !important;
+      border-radius: 20px;
+      min-width: 15rem;
+      width: 100%;
       padding: .25rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: .75rem;
+      background: var(--clr-translucent-black);
+      box-shadow: 0 0 1rem inset rgba(0, 0, 0, 0.055);
 
       textarea,
       input[type="text"],
@@ -259,6 +282,8 @@ header{
         border: 0;
         padding: .25rem .5rem;
         border-radius: 10px;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.11);
+        background: var(--text-field-background);
         
         &:focus{
           outline-color: var(--clr-primary-light);
@@ -273,6 +298,7 @@ header{
       }
       
       h1,
+      h2,
       p{
         color: white;
         text-shadow: 1px 1px 1px black;
@@ -287,11 +313,15 @@ header{
 
       }
 
+      h2{
+        font-size: larger;
+      }
+
       .submit-button{
+        width: 100%;
         font-size: x-large;
         font-weight: bolder;
-        padding: 0.5rem;
-        width: 100%;
+        padding: 0.25rem;
         border: 2px solid rgba(0, 0, 0, 0.192);
         border-radius: 10px;
         transition: 250ms ease-in-out;
@@ -306,11 +336,11 @@ header{
     }
 
     .profile-page{
-      display: flex;
-      flex-direction: column;
       gap: 2rem;
 
       .profile-page-pic{
+        display: block;
+        min-width: 15rem;
         width: 15rem;
         height: 15rem;
         object-fit: cover;
@@ -319,30 +349,25 @@ header{
       }
 
       form{
-        width: 100%;
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 2rem;
+
+        &>*{
+          width: 100%;
+        }
+        
         label{
-          flex: 1 1 100%;
           border-bottom: 2px solid rgba(0, 0, 0, 0.192);
           font-size: larger;
           font-weight: bold;
         }
+
         textarea{
-          flex: 1 1 100%;
           resize: vertical;
           min-height: 2.5rem;
           height: 10rem;
           max-height: 15rem;
-        }
-        input[type="text"]{
-          display: inline;
-          flex: 1 1 100%;
-        }
-        .submit-button{
-          flex: 1 1 0;
         }
       }
     }
@@ -351,6 +376,50 @@ header{
       display: flex;
       flex-direction: column;
       align-items: center;
+      .create-post-form{
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+
+        &>*{
+          width: 100%;
+        }
+
+        label{
+          display: flex;
+          align-items: flex-end;
+          gap: .5rem;
+          border-bottom: 2px solid rgba(0, 0, 0, 0.192);
+          font-size: 1.5rem;
+          font-weight: bold;
+          .prof-pic{
+            // padding: .25rem;
+            border-radius: 50%;
+            min-width: 2.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            object-fit: cover;
+            box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.473);
+          }
+        }
+
+        textarea{
+          resize: vertical;
+          min-height: 2.5rem;
+          height: 10rem;
+          max-height: 15rem;
+        }
+
+        .image-check-container{
+          display: flex;
+          gap: .25rem;
+          label{
+            border: none;
+            font-size: medium;
+          }
+        }
+
+      }
     }
   }
 }

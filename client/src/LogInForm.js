@@ -32,8 +32,9 @@ function LogInForm({onLogin}){
     return (
         <div className="wrapper">
             <div className="login card">
-                <form className="login-form" onSubmit={login}>
-                    <h1>Sign in</h1>
+                <form onSubmit={login}>
+                    <h1 className="logo">BarkBook</h1>
+                    <h2>Sign in</h2>
                     <input type="text" placeholder="Username" onChange={e => setCredentials({...credentials, username:e.target.value})}/>
                     <input type="password" placeholder="Password" onChange={e => setCredentials({...credentials, password:e.target.value})}/>
                     <div className="errors-container">{errors.map(e => <li className="error" key={e}>{e}</li>)}</div>

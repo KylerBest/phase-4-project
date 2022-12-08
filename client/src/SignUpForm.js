@@ -33,8 +33,9 @@ function SignUpForm({onLogin}){
     return (
         <div className="wrapper">
             <div className="login card">
-                <form className="login-form" onSubmit={signUp}>
-                    <h1>Sign up</h1>
+                <form onSubmit={signUp}>
+                    <h1 className="logo">BarkBook</h1>
+                    <h2>Sign up</h2>
                     <input type="text" placeholder="Username" onChange={e => setCredentials({...credentials, username:e.target.value})}/>
                     <input type="password" placeholder="Password" onChange={e => setCredentials({...credentials, password:e.target.value})}/>
                     <input type="password" placeholder="Confirm password" onChange={e => setCredentials({...credentials, password_confirmation:e.target.value})}/>

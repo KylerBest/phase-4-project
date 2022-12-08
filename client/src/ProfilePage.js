@@ -1,7 +1,6 @@
 import {useState} from "react";
 
-function ProfilePage({user, setUser}){
-    const profPic = user ? user.profile_picture_url || `${process.env.PUBLIC_URL}/dog_prof_pic.jpg` : `${process.env.PUBLIC_URL}/dog_prof_pic.jpg`
+function ProfilePage({user, setUser, profilePicture}){
     const [profile, setProfile] = useState({
         profile_picture_url:user ? user.profile_picture_url : null,
         bio:user ? user.bio : null
@@ -31,8 +30,8 @@ function ProfilePage({user, setUser}){
     return(
         <div className="wrapper">
             <div className="card profile-page">
-                <h1>{user ? `${user.username}'s profile:` : <></>}</h1>
-                <img className="profile-page-pic" src={profPic} />
+                <img className="profile-page-pic" src={profilePicture} />
+                <h1>{user ? `${user.username}:` : <></>}</h1>
                 <form>
                     <label htmlFor="profile-picture-url">Profile picture:</label>
                     <input id="profile-picture-url" type="text" placeholder="Enter image URL..." value={profile.profile_picture_url || ""}
@@ -40,8 +39,10 @@ function ProfilePage({user, setUser}){
                 </form>
                 <form>
                     <label htmlFor="bio">Bio:</label>
-                    <textarea id="bio" type="text" placeholder="Who are you?" value={profile.bio || ""} 
+                    <textarea id="bio" placeholder="Who are you?" value={profile.bio || ""} 
                     onChange={e => setProfile({...profile, bio:e.target.value || ""})}/>
+                </form>
+                <form>
                     <input className="submit-button" type="submit" value={isLoading ? "Loading..." : "Change"} onClick={e => updateProfile(e)}/>
                 </form>
             </div>

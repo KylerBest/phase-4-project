@@ -4,9 +4,7 @@ import {Link} from "react-router-dom"
 import {ReactComponent as MenuIcon} from "./icon-hamburger.svg"
 import NavMenu from "./NavMenu";
 
-function Header({setSearch, user, logout}){
-    const profPic = user ? user.profile_picture_url || `${process.env.PUBLIC_URL}/dog_prof_pic.jpg` : `${process.env.PUBLIC_URL}/dog_prof_pic.jpg`
-
+function Header({setSearch, user, logout, profilePicture}){
     const [isShowingNavMenu, setIsShowingNavMenu] = useState(false)
 
 
@@ -27,7 +25,7 @@ function Header({setSearch, user, logout}){
             <SearchBar 
                 setSearch={setSearch}
             />
-            <Link to="/profile" ><img className="prof-pic" src={profPic} /></Link>
+            <Link to="/profile" ><img className="prof-pic" src={profilePicture} /></Link>
         </header>
     )
 }
