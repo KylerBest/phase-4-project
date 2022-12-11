@@ -24,15 +24,15 @@ function App() {
         nav('/login')
       }
     })
-    fetch("/posts").then(r =>{
-      if(r.ok){
-        r.json().then(setFeed)
-      }
-    })
   }, [])
 
   function onLogin(user){
     setUser(user)
+    fetch("/posts").then(r => {
+      if(r.ok){
+        r.json().then(setFeed)
+      }
+    })
     nav('/home')
   }
 
