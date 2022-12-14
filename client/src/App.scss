@@ -13,8 +13,10 @@
   --clr-translucent-black: rgba(0, 0, 0, 0.1);
 
   --text-field-background: linear-gradient(180deg, rgba(255, 255, 255, 0.603) 0%, rgba(226, 226, 226, 0.76) 100%);
-  --background-gradient-faint: linear-gradient(0deg, rgba(233, 191, 162, 0.65) 0%, rgba(167, 213, 228, 0.65) 100%);
-  --background-gradient-saturated: linear-gradient(0deg, rgb(233, 191, 162) 0%, rgb(167, 213, 228) 100%);
+  --background-gradient-faint: linear-gradient(315deg, rgba(233, 192, 153, 0.45) 0%, rgba(162, 190, 231, 0.45) 100%);
+  --background-gradient-saturated: linear-gradient(315deg, rgb(233, 192, 153) 0%, rgb(162, 190, 231) 100%);
+
+  --gradient-liked: linear-gradient(315deg, rgba(223, 179, 138, 0.65) 0%, rgb(236, 222, 95) 100%);
 }
 
 
@@ -566,18 +568,56 @@ header{
             width: 100%;
             flex-grow: 1;
             display: flex;
+            justify-content: space-between;
             align-items: flex-end;
 
+            .post-date{
+              color: var(--clr-neutral-200);
+              font-weight: lighter;
+            }
+            
             div{
               display: flex;
               align-items: center;
+              justify-content: space-between;
               border-radius: 50px;
               padding: .2rem .25rem;
-              background: var(--background-gradient-saturated);
+              background: var(--background-gradient-faint);
               border: 2px solid;
               border-color: var(--clr-neutral-200);
+              transition: 450ms;
+              
+              &.liked-by-me{
+                transition: 450ms;
+                background: var(--gradient-liked);
+                border-radius: 5px;
+                button{
+                  transition: 450ms ease-in-out;
+                  color: white;
+                  border-radius: 2px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  background: transparent;
+                  border: none;
+                  &:hover{
+                    cursor: auto;
+                    background: transparent;
+                    border: none;
+                  }
+                }
+              }
+
+              p{
+                color: var(--clr-primary-dark);
+              }
+
               .like-button{
-                text-shadow: 0 0 2px;
+                transition: 450ms ease-in-out;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-shadow: 0 0 3px;
                 padding: .125rem;
                 font-size: medium;
                 height: 1.85rem;
@@ -585,12 +625,11 @@ header{
                 margin-inline-end: .5rem;
                 border-radius: 50%;
                 border: 1px solid;
-                border-color: var(--clr-primary-light);
+                border-color: rgb(60, 207, 60);
                 background: var(--clr-neutral-100);
                 transition: none;
                 &:hover{
-                  transition: none;
-                  background: var(--clr-primary-light);
+                  background: rgb(60, 207, 60);
                 }
               }
             }

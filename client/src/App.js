@@ -94,6 +94,7 @@ function App() {
               profilePicture={profilePicture}
               feed={feed}
               setFeed={setFeed}
+              search={search}
             />
         }
         />

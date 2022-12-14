@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :likes
 
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
@@ -8,5 +9,6 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   resources :posts, only: [:index, :create]
+  resources :likes, only: [:create]
 
 end
