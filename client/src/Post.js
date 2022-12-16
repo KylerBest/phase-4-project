@@ -4,9 +4,10 @@ function Post({user, post, search}){
     const [likeCount, setLikeCount] = useState(post.users_liked.length)
     const [likedByMe, setLikedByMe] = useState(user.liked_posts.map(p => p.id).includes(post.id))
     const postDate = `${post.created_at.slice(5, 7)}/${post.created_at.slice(8,10)}/${post.created_at.slice(0,4)}`
+    const myPost = user.posts.map(p => p.id).includes(post.id)
 
     function style(){
-        const big = `span ${(Math.floor(post.text_content.length / 100)) + (post.image_url ? 1 : 0) + 1}`
+        const big = `span ${(Math.floor(post.text_content.length / 150)) + (post.image_url ? 1 : 0) + 1}`
         return {
             gridRow: `${big}/${big}`,
             gridColumn: `${big}/${big}`
@@ -53,7 +54,6 @@ function Post({user, post, search}){
                 </div>
                 <p className="post-date">{postDate}</p>
             </div>
-            {/* {myPost ? <button className="delete-post-button">delete ❌</button> : <></>} */}
         </div>
     )
 }
