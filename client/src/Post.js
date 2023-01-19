@@ -7,10 +7,10 @@ function Post({user, post, search}){
     const myPost = user.posts.map(p => p.id).includes(post.id)
 
     function style(){
-        const big = `span ${(Math.floor(post.text_content.length / 150)) + (post.image_url ? 1 : 0) + 1}`
+        const size = `span ${(Math.floor(post.text_content.length / 150)) + (post.image_url ? 1 : 0) + 1}`
         return {
-            gridRow: `${big}/${big}`,
-            gridColumn: `${big}/${big}`
+            gridRow: `${size}/${size}`,
+            gridColumn: `${size}/${size}`
         }
     }
 

@@ -36,12 +36,12 @@ function CreatePostForm({profilePicture, feed, setFeed, toggleCreatePostForm}){
     }
 
     return(
-        <div className="overlay">
-            <button onClick={() => toggleCreatePostForm()}>{`<Back`}</button>
+        <div className="overlay" >
+            <div className="create-post-form-toggle" onClick={() => toggleCreatePostForm()} />
             <div className="card">
                 <form className="create-post-form" onSubmit={createPost}>
                     <label htmlFor="post-content">
-                        <Link to="/profile" ><img className="prof-pic" src={profilePicture} /></Link>Create a post:
+                        <Link to="/profile/me" ><img className="prof-pic" src={profilePicture} alt="" /></Link>Create a post:
                     </label>
                     <textarea type="text" id="post-content" placeholder="What's up?" onChange={e => setPostContent({...postContent, text_content:e.target.value})} /> 
                     <div className="errors-container">{errors.map(e => <li className="error" key={e}>{e}</li>)}</div>

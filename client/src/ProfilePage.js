@@ -30,7 +30,7 @@ function ProfilePage({user, setUser, profilePicture}){
     return(
         <div className="wrapper">
             <div className="card profile-page">
-                <img className="profile-page-pic" src={profilePicture} />
+                <img className="profile-page-pic" src={profilePicture} alt=""/>
                 <h1>{user ? `${user.username}:` : <></>}</h1>
                 <form>
                     <label htmlFor="profile-picture-url">Profile picture:</label>

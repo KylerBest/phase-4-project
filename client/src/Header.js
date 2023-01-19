@@ -25,7 +25,7 @@ function Header({setSearch, user, logout, profilePicture}){
             <SearchBar 
                 setSearch={setSearch}
             />
-            <Link to="/profile" ><img className="prof-pic" src={profilePicture} /></Link>
+            <Link to="/profile/me" ><img className="prof-pic" src={profilePicture} alt="" /></Link>
         </header>
     )
 }

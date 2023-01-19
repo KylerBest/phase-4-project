@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :likes
-
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   patch "/update_profile", to: "users#update"
@@ -10,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:index, :create]
   resources :likes, only: [:create]
+  resources :users, only: [:index]
 
 end
