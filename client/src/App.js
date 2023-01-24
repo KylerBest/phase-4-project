@@ -13,8 +13,8 @@ function App() {
   const [search, setSearch] = useState('')
   const [user, setUser] = useState(null)
   const [feed, setFeed] = useState([])
+  const [likes, setLikes] = useState([])
   const profilePicture = user && user.profile_picture_url ? user.profile_picture_url : `${process.env.PUBLIC_URL}/dog_prof_pic.jpg`
-
 
   useEffect(() => {
     fetch("/me").then(r => {
@@ -30,7 +30,10 @@ function App() {
     setUser(user)
     fetch("/posts").then(r => {
       if(r.ok){
-        r.json().then(setFeed)
+        r.json().then(feed => {
+          setFeed(feed)
+          setLikes(feed.filter(post => user.liked_posts.map(p => p.id).includes(post.id)))
+        })
       }
     })
     nav('/home')
@@ -44,6 +47,7 @@ function App() {
         if(r.ok){
             setUser(null)
             setFeed([])
+            setLikes([])
             setSearch('')
             nav('/login')
         }
@@ -97,6 +101,8 @@ function App() {
               feed={feed}
               setFeed={setFeed}
               search={search}
+              likes={likes}
+              setLikes={setLikes}
             />
         }
         />
