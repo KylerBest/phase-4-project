@@ -2,7 +2,7 @@
 
 For my fourth project, I present BarkBook, the "Facebook for dogs."
 
-gif here
+![](https://github.com/KylerBest/phase-4-project/blob/main/client/public/gif.gif)
 
 ## Functionality
 
