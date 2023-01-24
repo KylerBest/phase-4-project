@@ -43,6 +43,8 @@ function App() {
     .then(r => {
         if(r.ok){
             setUser(null)
+            setFeed([])
+            setSearch('')
             nav('/login')
         }
     })

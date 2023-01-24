@@ -37,7 +37,7 @@ function Post({user, post, search}){
     return (
         <div style={style()} className={`post card`}>
             <div className="post-user-container">
-                <img className="prof-pic" src={post.user.profile_picture_url} />
+                <img className="prof-pic" src={post.user.profile_picture_url || `${process.env.PUBLIC_URL}/dog_prof_pic.jpg`} />
                 <h1>{post.user.username}:</h1>
             </div>
             <div className="post-image-container">
