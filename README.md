@@ -1,24 +1,25 @@
-# README
+# BarkBook
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+For my fourth project, I present BarkBook, the "Facebook for dogs."
 
-Things you may want to cover:
+gif here
 
-* Ruby version
+## Functionality
 
-* System dependencies
+In this app, you're able to do a couple of things:
 
-* Configuration
+* Create an account
 
-* Database creation
+* Log in/out
 
-* Database initialization
+* Create your own posts, which may contain text and an image (via image URL)
 
-* How to run the test suite
+* View posts from other accounts
 
-* Services (job queues, cache servers, search engines, etc.)
+* Like posts
 
-* Deployment instructions
+* View all posts you've liked
 
-* ...
+* Update your account's profile picture and bio
+
+* Filter posts by user or content
