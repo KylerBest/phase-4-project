@@ -41,7 +41,7 @@ function SignUpForm({onLogin}){
                     <input type="password" placeholder="Confirm password" onChange={e => setCredentials({...credentials, password_confirmation:e.target.value})}/>
                     <div className="errors-container">{errors.map(e => <li className="error" key={e}>{e}</li>)}</div>
                     <input className="submit-button" type="submit" value={isLoading ? "Loading..." : "Continue"}/>
-                    <p>Already have an account? <Link to="/login">Sign in.</Link></p>
+                    <p>Already have an account? <Link to="/login">Sign in</Link></p>
                 </form>
             </div>
         </div>
