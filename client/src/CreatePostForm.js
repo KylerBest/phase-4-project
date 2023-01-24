@@ -46,7 +46,7 @@ function CreatePostForm({profilePicture, feed, setFeed, toggleCreatePostForm}){
                     <textarea type="text" id="post-content" placeholder="What's up?" onChange={e => setPostContent({...postContent, text_content:e.target.value})} /> 
                     <div className="errors-container">{errors.map(e => <li className="error" key={e}>{e}</li>)}</div>
                     <div className="image-check-container">
-                        <input id="image-check" type="checkbox" onChange={e => setShowImageInput(!showImageInput)}/>
+                        <input id="image-check" type="checkbox" onChange={() => setShowImageInput(!showImageInput)}/>
                         <label htmlFor="image-check">Want to add an image?</label>
                     </div>
                     {showImageInput ? <input type="text" placeholder="Enter image url" onChange={e => setPostContent({...postContent, image_url:e.target.value})}/> : <></>}

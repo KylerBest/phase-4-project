@@ -549,6 +549,9 @@ header{
         gap: 1rem;
         width: 100%;
         padding: 1rem;
+        .my-post{
+          background: var(--background-gradient-faint);
+        }
         .post{
           position: relative;
           min-width: 0;

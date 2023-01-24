@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 import {ReactComponent as MenuIcon} from "./icon-hamburger.svg"
 import NavMenu from "./NavMenu";
 
-function Header({setSearch, user, logout, profilePicture}){
+function Header({setSearch, logout, profilePicture}){
     const [isShowingNavMenu, setIsShowingNavMenu] = useState(false)
 
 

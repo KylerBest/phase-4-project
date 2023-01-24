@@ -1,6 +1,6 @@
 import {useState} from "react"
 
-function Post({user, post, search}){ 
+function Post({user, post}){ 
     const [likeCount, setLikeCount] = useState(post.users_liked.length)
     const [likedByMe, setLikedByMe] = useState(user.liked_posts.map(p => p.id).includes(post.id))
     const postDate = `${post.created_at.slice(5, 7)}/${post.created_at.slice(8,10)}/${post.created_at.slice(0,4)}`
@@ -35,7 +35,7 @@ function Post({user, post, search}){
     }
 
     return (
-        <div style={style()} className={`post card`}>
+        <div style={style()} className={`post card ${myPost ? 'my-post': ''}`}>
             <div className="post-user-container">
                 <img className="prof-pic" src={post.user.profile_picture_url || `${process.env.PUBLIC_URL}/dog_prof_pic.jpg`} />
                 <h1>{post.user.username}:</h1>
