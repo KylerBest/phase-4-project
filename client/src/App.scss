@@ -436,6 +436,18 @@ header{
     .profile-page{
       gap: 2rem;
 
+      .delete-profile-button{
+        background: red;
+        color: white;
+        padding: .25rem;
+        font-size: x-large;
+        border-radius: 10px;
+        &:hover{
+          background: rgb(255, 60, 60);
+          cursor: pointer;
+        }
+      }
+
       .profile-page-pic{
         display: block;
         min-width: 15rem;

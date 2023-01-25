@@ -54,6 +54,21 @@ function App() {
     })
   }
 
+  function deleteProfile(){
+    fetch(`/users/${user.id}`, {
+        method:'DELETE'
+    })
+    .then(r => {
+        if(r.ok){
+          setUser(null)
+          setFeed([])
+          setLikes([])
+          setSearch('')
+          nav('/login')
+        }
+    })
+}
+
   return (
   <div className='App'>
     {user ? <Header 
@@ -89,6 +104,8 @@ function App() {
             user={user}
             setUser={setUser}
             profilePicture={profilePicture}
+            logout={logout}
+            deleteProfile={deleteProfile}
           />}
         />
 

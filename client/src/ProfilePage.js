@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-function ProfilePage({user, setUser, profilePicture}){
+function ProfilePage({user, setUser, profilePicture, deleteProfile}){
     const [profile, setProfile] = useState({
         profile_picture_url:user ? user.profile_picture_url : null,
         bio:user ? user.bio : null
@@ -44,6 +44,7 @@ function ProfilePage({user, setUser, profilePicture}){
                 </form>
                 <form>
                     <input className="submit-button" type="submit" value={isLoading ? "Loading..." : "Change"} onClick={e => updateProfile(e)}/>
+                    <input className="delete-profile-button" type="submit" value={isLoading ? "Loading..." : "Delete Account"} onClick={() => deleteProfile()}/>
                 </form>
             </div>
         </div>
