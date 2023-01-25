@@ -51,9 +51,11 @@ function Post({user, post, deletePost, likes, setLikes}){
                 <p>{post.text_content}</p>
             </div>
             <div className="like-button-container">
-                <div className={likedByMe ? "liked-by-me" : ""}>
-                    <button disabled={likedByMe} onClick={() => likePost(post)} className="like-button">{likedByMe ? "✅" : "👍"}</button>
-                    <p className="like-counter">Likes: {likeCount}</p>
+                <div className="like-button-inner">
+                    <div id="like-button" className={likedByMe ? "liked-by-me" : ""}>
+                        <button disabled={likedByMe} onClick={() => likePost(post)} className="like-button">{likedByMe ? "✅" : "👍"}</button>
+                    </div>
+                    <p className="like-counter">{likeCount}</p>
                 </div>
                 <p className="post-date">{postDate}</p>
             </div>

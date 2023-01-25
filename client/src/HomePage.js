@@ -24,6 +24,7 @@ function HomePage({user, profilePicture, feed, setFeed, search, likes, setLikes}
         .then(r => {
             if(r.ok){
                 setFeed(feed.filter(p => p.id !== post.id))
+                setLikes(likes.filter(p => p.id !== post.id))
             }
         })
     }
@@ -42,7 +43,7 @@ function HomePage({user, profilePicture, feed, setFeed, search, likes, setLikes}
                 <button onClick={() => toggleCreatePostForm()}>New post</button>
                 <div>
                     <input id="liked-filter" type="checkbox" onChange={() => setShowLikedPostsOnly(!showLikedPostsOnly)} />
-                    <label htmlFor="liked-filter">Only show liked posts</label>
+                    <label htmlFor="liked-filter">Only show my likes</label>
                 </div>
                 <div className="feed-container">
                     {feed.length > 0 ? filteredFeed.map(post =>
