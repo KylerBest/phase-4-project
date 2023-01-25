@@ -44,7 +44,7 @@ function ProfilePage({user, setUser, profilePicture, deleteProfile}){
                 </form>
                 <form>
                     <input className="submit-button" type="submit" value={isLoading ? "Loading..." : "Change"} onClick={e => updateProfile(e)}/>
-                    <input className="delete-profile-button" type="submit" value={isLoading ? "Loading..." : "Delete Account"} onClick={() => deleteProfile()}/>
+                    <input className="delete-profile-button" type="submit" value="Delete Account" onClick={() => deleteProfile()}/>
                 </form>
             </div>
         </div>
