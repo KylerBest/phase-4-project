@@ -10,6 +10,12 @@ class PostsController < ApplicationController
         render json: post, status: :created
     end
 
+    def update
+        post = @current_user.posts.find_by(id: params[:id])
+        post.update!(post_params)
+        render json: post, status: :ok
+    end
+
     def destroy
         post = @current_user.posts.find_by(id: params[:id])
         post.destroy
