@@ -1,4 +1,4 @@
 class LikeSerializer < ActiveModel::Serializer
-  attributes :user_id
+  attributes :rating
   belongs_to :post
 end

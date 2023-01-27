@@ -25,8 +25,8 @@ function CreatePostForm({id, postContent, setPostContent, toggleEditPostForm, pr
             setIsLoading(false)
             if(r.ok){
                 r.json().then(post => {
-                    toggleEditPostForm()
                     setPostContent(newPostContent)
+                    toggleEditPostForm()
                 })
             }
             else{

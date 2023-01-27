@@ -151,22 +151,6 @@ border: 0 !important;
     z-index: 1001;
   }
 
-  button{
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    width: 6rem;
-    font-size: 1.5rem;
-    background: var(--clr-neutral-100);
-    border: 2px solid;
-    border-radius: 10px;
-    border-color: var(--clr-neutral-200);
-    &:hover{
-      cursor: pointer;
-      background-color: var(--clr-neutral-200);
-    }
-  }
-
 }
 
 .logo{
@@ -346,6 +330,25 @@ header{
       align-items: center;
       background: var(--background-gradient-saturated);
       box-shadow: .2rem .2rem .5rem .2rem rgba(0, 0, 0, 0.25);
+
+      .rating-container{
+        display: flex;
+        gap: 1rem;
+        h2{
+          font-size: xxx-large;
+          width: 7rem;
+        }
+
+        button{
+          position: static;
+          padding: 0 .5rem;
+          font-size: xx-large;
+          background: white;
+          &:hover{
+            background: white;
+          }
+        }
+      }
 
       .logo{
         &:hover{
@@ -580,11 +583,6 @@ header{
           justify-content: flex-start;
           background: var(--text-field-background);
           .post-user-container{
-            >*{
-              &:hover{
-                cursor: pointer;
-              }
-            }
             padding: .125rem;
             width: 100%;
             display: flex;
@@ -703,14 +701,14 @@ header{
                   transition: 450ms;
                   background: var(--gradient-liked);
                   border-radius: 5px;
-                  button{
+                  .like-button{
                     transition: 450ms ease-in-out;
                     color: white;
                     border-radius: 2px;
+                    text-shadow: 0px 0px 4px black;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    background: transparent;
                     border: none;
                     &:hover{
                       cursor: auto;
