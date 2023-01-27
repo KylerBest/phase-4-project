@@ -7,4 +7,9 @@ class LikesController < ApplicationController
         render json: post, status: :ok
     end
 
+    def index
+        likes = @current_user.liked_posts.reverse
+        render json: likes, status: :ok
+    end
+
 end

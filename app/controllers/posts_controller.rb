@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
 
     def index
-        posts = Post.all
-        render json: posts.reverse, status: :ok
+        posts = Post.all.reverse
+        render json: posts, status: :ok
     end
     
     def create

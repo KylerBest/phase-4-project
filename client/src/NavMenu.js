@@ -8,6 +8,7 @@ function NavMenu({isShowingNavMenu, setIsShowingNavMenu, logout}){
     return (
         <div className={menuToggle()}>
             <Link to="/home" onClick={() => setIsShowingNavMenu(false)}>Home</Link>
+            <Link to="/liked_posts" onClick={() => setIsShowingNavMenu(false)}>My Likes</Link>
             <Link to="/profile/me" onClick={() => setIsShowingNavMenu(false)}>Profile</Link>
             <p onClick={() => {
                 setIsShowingNavMenu(false)

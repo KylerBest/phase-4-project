@@ -3,9 +3,8 @@ import EditPostForm from "./EditPostForm"
 import RatePostForm from "./RatePostForm"
 
 function Post({user, post, deletePost, likes, setLikes}){ 
-    console.log(post)
     const [rating, setRating] = useState((post.likes.reduce((total, current) => total + current.rating, 0) / post.likes.length) || 0)
-    const [likedByMe, setLikedByMe] = useState(user.liked_posts.map(p => p.id).includes(post.id))
+    const [likedByMe, setLikedByMe] = useState(post.users_liked.map(user => user.id).includes(user.id))
     const [postContent, setPostContent] = useState({
         text_content:post.text_content,
         image_url:post.image_url

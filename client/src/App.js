@@ -32,7 +32,13 @@ function App() {
       if(r.ok){
         r.json().then(feed => {
           setFeed(feed)
-          setLikes(feed.filter(post => user.liked_posts.map(p => p.id).includes(post.id)))
+        })
+      }
+    })
+    fetch('/likes').then(r => {
+      if(r.ok){
+        r.json().then(likes => {
+          setLikes(likes)
         })
       }
     })
@@ -110,6 +116,22 @@ function App() {
         />
 
         <Route 
+          path='/liked_posts'
+          element={
+            <HomePage
+              user={user}
+              profilePicture={profilePicture}
+              feed={feed}
+              setFeed={setFeed}
+              search={search}
+              likes={likes}
+              setLikes={setLikes}
+              likesOnly={true}
+            />
+          }
+        />
+
+        <Route 
           path='/home'
           element={
             <HomePage
@@ -120,8 +142,9 @@ function App() {
               search={search}
               likes={likes}
               setLikes={setLikes}
+              likesOnly={false}
             />
-        }
+          }
         />
 
         <Route 
