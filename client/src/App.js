@@ -14,7 +14,7 @@ function App() {
   const [user, setUser] = useState(null)
   const [feed, setFeed] = useState([])
   const [likes, setLikes] = useState([])
-  const [profilePicture, setProfilePicture] = useState(`${process.env.PUBLIC_URL}/dog_prof_pic.jpg`)
+  const [profilePicture, setProfilePicture] = useState("")
 
   useEffect(() => {
     fetch("/me").then(r => {
@@ -27,7 +27,6 @@ function App() {
   }, [])
 
   function onLogin(user){
-    console.log(user)
     setUser(user)
     setProfilePicture(user.profile_picture_url || `${process.env.PUBLIC_URL}/dog_prof_pic.jpg`)
     setLikes(user.liked_posts)
