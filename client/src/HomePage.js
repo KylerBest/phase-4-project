@@ -43,7 +43,7 @@ function HomePage({user, profilePicture, feed, setFeed, search, likes, setLikes,
                 <button onClick={() => toggleCreatePostForm()}>New post</button>
                 <div className="feed-container">
                     {feed.length > 0 ? posts.map(post =>
-                        <Post key={post.id} post={post} user={user} search={search} deletePost={deletePost} likes={likes} setLikes={setLikes}/>
+                        <Post key={post.id} post={post} user={user} profilePicture={profilePicture} search={search} deletePost={deletePost} likes={likes} setLikes={setLikes}/>
                     ) : <></>}
                 </div>
             </div>

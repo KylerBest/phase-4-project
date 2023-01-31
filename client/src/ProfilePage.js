@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-function ProfilePage({user, setUser, profilePicture, deleteProfile}){
+function ProfilePage({user, setUser, profilePicture, setProfilePicture, deleteProfile}){
     const [profile, setProfile] = useState({
         profile_picture_url: user.profile_picture_url || "",
         bio: user.bio || ""
@@ -19,7 +19,10 @@ function ProfilePage({user, setUser, profilePicture, deleteProfile}){
         })
         .then(r => {
             if(r.ok){
-                r.json().then(setUser)
+                r.json().then(user => {
+                    setUser(user)
+                    setProfilePicture(user.profile_picture_url)
+                })
             }else{
                 r.json().then(console.log)
             }

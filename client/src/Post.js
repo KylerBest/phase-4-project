@@ -2,7 +2,7 @@ import {useState} from "react"
 import EditPostForm from "./EditPostForm"
 import RatePostForm from "./RatePostForm"
 
-function Post({user, post, deletePost, likes, setLikes}){ 
+function Post({user, profilePicture, post, deletePost, likes, setLikes}){ 
     const [rating, setRating] = useState((post.likes.reduce((total, current) => total + current.rating, 0) / post.likes.length) || 0)
     const [likedByMe, setLikedByMe] = useState(post.users_liked.map(user => user.id).includes(user.id))
     const [postContent, setPostContent] = useState({
@@ -60,7 +60,7 @@ function Post({user, post, deletePost, likes, setLikes}){
             <div style={style()} className={`post card ${myPost ? 'my-post': ''}`}>
                 <div className="post-user-container">
                     <div className="post-user-inner">
-                        <img className="prof-pic" src={profilePic || `${process.env.PUBLIC_URL}/dog_prof_pic.jpg`} />
+                        <img className="prof-pic" src={myPost ? profilePicture : (post.user.profile_picture_url || `${process.env.PUBLIC_URL}/dog_prof_pic.jpg`)} />
                         <h1>{post.user.username}:</h1>
                     </div>
                     {myPost ? <div>
