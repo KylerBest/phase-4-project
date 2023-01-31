@@ -27,7 +27,9 @@ function App() {
   }, [])
 
   function onLogin(user){
+    console.log(user)
     setUser(user)
+    setLikes(user.liked_posts)
     fetch("/posts").then(r => {
       if(r.ok){
         r.json().then(feed => {
@@ -35,14 +37,6 @@ function App() {
         })
       }
     })
-    fetch('/likes').then(r => {
-      if(r.ok){
-        r.json().then(likes => {
-          setLikes(likes)
-        })
-      }
-    })
-    nav('/home')
   }
 
   function logout(){
@@ -86,11 +80,57 @@ function App() {
     <div className='body'>
       <Routes>
 
+        <Route 
+          path='/profile/me'
+          element={ user ?
+          <ProfilePage
+            user={user}
+            setUser={setUser}
+            profilePicture={profilePicture}
+            logout={logout}
+            deleteProfile={deleteProfile}
+          />
+          : <h1>Loading...</h1>}
+        />
+
+        <Route 
+          path='/liked_posts'
+          element={
+            <HomePage
+            user={user}
+            profilePicture={profilePicture}
+            feed={feed}
+            setFeed={setFeed}
+            search={search}
+            likes={likes}
+            setLikes={setLikes}
+            likesOnly={true}
+            />
+          }
+        />
+
+        <Route 
+          path='/home'
+          element={
+            <HomePage
+            user={user}
+            profilePicture={profilePicture}
+            feed={feed}
+            setFeed={setFeed}
+            search={search}
+            likes={likes}
+            setLikes={setLikes}
+            likesOnly={false}
+            />
+          }
+        />
+
         <Route
           path='/login'
           element={
             <LogInForm
               onLogin={onLogin}
+              nav={nav}
             />
           }
         />  
@@ -100,49 +140,7 @@ function App() {
           element={
             <SignUpForm
               onLogin={onLogin}
-            />
-          }
-        />
-
-        <Route 
-          path='/profile/me'
-          element={<ProfilePage
-            user={user}
-            setUser={setUser}
-            profilePicture={profilePicture}
-            logout={logout}
-            deleteProfile={deleteProfile}
-          />}
-        />
-
-        <Route 
-          path='/liked_posts'
-          element={
-            <HomePage
-              user={user}
-              profilePicture={profilePicture}
-              feed={feed}
-              setFeed={setFeed}
-              search={search}
-              likes={likes}
-              setLikes={setLikes}
-              likesOnly={true}
-            />
-          }
-        />
-
-        <Route 
-          path='/home'
-          element={
-            <HomePage
-              user={user}
-              profilePicture={profilePicture}
-              feed={feed}
-              setFeed={setFeed}
-              search={search}
-              likes={likes}
-              setLikes={setLikes}
-              likesOnly={false}
+              nav={nav}
             />
           }
         />

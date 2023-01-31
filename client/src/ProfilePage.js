@@ -2,15 +2,15 @@ import {useState} from "react";
 
 function ProfilePage({user, setUser, profilePicture, deleteProfile}){
     const [profile, setProfile] = useState({
-        profile_picture_url:user ? user.profile_picture_url : null,
-        bio:user ? user.bio : null
+        profile_picture_url: user.profile_picture_url || "",
+        bio: user.bio || ""
     })
     const [isLoading, setIsLoading] = useState(false)
 
     function updateProfile(e){
         e.preventDefault()
         setIsLoading(true)
-        fetch(`/update_profile`, {
+        fetch(`/users/${user.id}`, {
             method: 'PATCH',
             headers: {
                 "Content-Type":"application/json"
@@ -31,16 +31,16 @@ function ProfilePage({user, setUser, profilePicture, deleteProfile}){
         <div className="wrapper">
             <div className="card profile-page">
                 <img className="profile-page-pic" src={profilePicture} alt=""/>
-                <h1>{user ? `${user.username}:` : <></>}</h1>
+                <h1>{user.username}</h1>
                 <form>
                     <label htmlFor="profile-picture-url">Profile picture:</label>
-                    <input id="profile-picture-url" type="text" placeholder="Enter image URL..." value={profile.profile_picture_url || ""}
+                    <input id="profile-picture-url" type="text" placeholder="Enter image URL..." value={profile.profile_picture_url}
                     onChange={e => setProfile({...profile, profile_picture_url:e.target.value})}/>
                 </form>
                 <form>
                     <label htmlFor="bio">Bio:</label>
-                    <textarea id="bio" placeholder="Who are you?" value={profile.bio || ""} 
-                    onChange={e => setProfile({...profile, bio:e.target.value || ""})}/>
+                    <textarea id="bio" placeholder="Who are you?" value={profile.bio} 
+                    onChange={e => setProfile({...profile, bio:e.target.value})}/>
                 </form>
                 <form>
                     <input className="submit-button" type="submit" value={isLoading ? "Loading..." : "Change"} onClick={e => updateProfile(e)}/>

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end
 
     def update
-        @current_user.update(profile_params)
+        @current_user.update(user_params)
         render json: @current_user, status: :ok
     end
 
@@ -30,10 +30,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.permit(:username, :password, :password_confirmation,)
+        params.permit(:username, :password, :password_confirmation, :profile_picture_url, :bio)
     end
 
-    def profile_params
-        params.permit(:profile_picture_url, :bio)
-    end
 end

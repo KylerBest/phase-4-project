@@ -24,7 +24,7 @@ function Post({user, post, deletePost, likes, setLikes}){
     }
 
     function style(){
-        const size = `span ${(Math.floor(post.text_content.length / 150)) + (post.image_url ? 1 : 0) + 1}`
+        const size = `span ${(Math.floor(post.text_content.length / 125)) + (post.image_url ? 1 : 0) + 1}`
         return {
             gridRow: `${size}/${size}`,
             gridColumn: `${size}/${size}`

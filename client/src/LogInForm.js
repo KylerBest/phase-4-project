@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Link} from "react-router-dom"
 
-function LogInForm({onLogin}){
+function LogInForm({onLogin, nav}){
     const [credentials, setCredentials] = useState({
         username:"",
         password:""
@@ -22,7 +22,10 @@ function LogInForm({onLogin}){
         .then(r => {
             setIsLoading(false)
             if(r.ok){
-                r.json().then(onLogin)
+                r.json().then(user => {
+                    onLogin(user)
+                    nav('/home')
+                })
             }else{
                 r.json().then(e => setErrors(e.errors))
             }
