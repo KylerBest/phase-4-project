@@ -2,7 +2,7 @@ import {useState} from "react"
 import EditPostForm from "./EditPostForm"
 import RatePostForm from "./RatePostForm"
 
-function Post({user, profilePicture, post, deletePost, likes, setLikes}){ 
+function Post({user, profilePicture, post, deletePost, likes, setLikes, feed, setFeed}){ 
     const [rating, setRating] = useState((post.likes.reduce((total, current) => total + current.rating, 0) / post.likes.length) || 0)
     const [likedByMe, setLikedByMe] = useState(post.users_liked.map(user => user.id).includes(user.id))
     const [postContent, setPostContent] = useState({
@@ -42,6 +42,10 @@ function Post({user, profilePicture, post, deletePost, likes, setLikes}){
         .then(r => {
             if(r.ok){
                 r.json().then(post => {
+                    let index = feed.map(p => p.id).indexOf(post.id)
+                    let newFeed = feed
+                    newFeed[index] = post
+                    setFeed(newFeed)
                     setRating(post.likes.reduce((total, current) => total + current.rating, 0) / post.likes.length)
                     setLikedByMe(true)
                     setLikes([...likes, post])

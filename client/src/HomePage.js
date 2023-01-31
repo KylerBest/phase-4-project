@@ -24,7 +24,6 @@ function HomePage({user, profilePicture, feed, setFeed, search, likes, setLikes,
             if(r.ok){
                 setFeed(feed.filter(p => p.id !== post.id))
                 setLikes(likes.filter(p => p.id !== post.id))
-                console.log(feed)
             }
         })
     }
@@ -43,7 +42,18 @@ function HomePage({user, profilePicture, feed, setFeed, search, likes, setLikes,
                 <button onClick={() => toggleCreatePostForm()}>New post</button>
                 <div className="feed-container">
                     {feed.length > 0 ? posts.map(post =>
-                        <Post key={post.id} post={post} user={user} profilePicture={profilePicture} search={search} deletePost={deletePost} likes={likes} setLikes={setLikes}/>
+                        <Post 
+                            key={post.id} 
+                            post={post} 
+                            user={user} 
+                            profilePicture={profilePicture} 
+                            search={search} 
+                            deletePost={deletePost} 
+                            likes={likes} 
+                            setLikes={setLikes}
+                            feed={feed}
+                            setFeed={setFeed}
+                        />
                     ) : <></>}
                 </div>
             </div>
