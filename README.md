@@ -16,9 +16,9 @@ In this app, you're able to do a couple of things:
 
 * View posts from other accounts
 
-* Like posts
+* Like/rate posts from 1 to 5 stars
 
-* View all posts you've liked
+* View all posts you've rated/liked
 
 * Update your account's profile picture and bio
 
