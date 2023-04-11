@@ -15,6 +15,7 @@ function App() {
   const [feed, setFeed] = useState([])
   const [likes, setLikes] = useState([])
   const [profilePicture, setProfilePicture] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     fetch("/me").then(r => {
@@ -23,6 +24,7 @@ function App() {
       }else{
         nav('/login')
       }
+      setIsLoading(false)
     })
   }, [])
 
@@ -78,81 +80,81 @@ function App() {
       profilePicture={profilePicture}
     /> : <></>}
     <div className='body'>
-      <Routes>
+      {isLoading ? <div className='wrapper'><h1>Loading...</h1></div> : <Routes>
 
-        <Route 
-          path='/profile/me'
-          element={ user ?
-          <ProfilePage
-            user={user}
-            setUser={setUser}
-            profilePicture={profilePicture}
-            setProfilePicture={setProfilePicture}
-            logout={logout}
-            deleteProfile={deleteProfile}
-          />
-          : <h1>Loading...</h1>}
-        />
+<Route 
+  path='/profile/me'
+  element={ user ?
+  <ProfilePage
+    user={user}
+    setUser={setUser}
+    profilePicture={profilePicture}
+    setProfilePicture={setProfilePicture}
+    logout={logout}
+    deleteProfile={deleteProfile}
+  />
+  : <h1>Loading...</h1>}
+/>
 
-        <Route 
-          path='/liked_posts'
-          element={
-            <HomePage
-            user={user}
-            profilePicture={profilePicture}
-            feed={feed}
-            setFeed={setFeed}
-            search={search}
-            likes={likes}
-            setLikes={setLikes}
-            likesOnly={true}
-            />
-          }
-        />
+<Route 
+  path='/liked_posts'
+  element={
+    <HomePage
+    user={user}
+    profilePicture={profilePicture}
+    feed={feed}
+    setFeed={setFeed}
+    search={search}
+    likes={likes}
+    setLikes={setLikes}
+    likesOnly={true}
+    />
+  }
+/>
 
-        <Route 
-          path='/home'
-          element={
-            <HomePage
-            user={user}
-            profilePicture={profilePicture}
-            feed={feed}
-            setFeed={setFeed}
-            search={search}
-            likes={likes}
-            setLikes={setLikes}
-            likesOnly={false}
-            />
-          }
-        />
+<Route 
+  path='/home'
+  element={
+    <HomePage
+    user={user}
+    profilePicture={profilePicture}
+    feed={feed}
+    setFeed={setFeed}
+    search={search}
+    likes={likes}
+    setLikes={setLikes}
+    likesOnly={false}
+    />
+  }
+/>
 
-        <Route
-          path='/login'
-          element={
-            <LogInForm
-              onLogin={onLogin}
-              nav={nav}
-            />
-          }
-        />  
+<Route
+  path='/login'
+  element={
+    <LogInForm
+      onLogin={onLogin}
+      nav={nav}
+    />
+  }
+/>  
 
-        <Route
-          path='/create_account'
-          element={
-            <SignUpForm
-              onLogin={onLogin}
-              nav={nav}
-            />
-          }
-        />
+<Route
+  path='/create_account'
+  element={
+    <SignUpForm
+      onLogin={onLogin}
+      nav={nav}
+    />
+  }
+/>
 
-        <Route 
-          path='/'
-          element={
-            <Navigate to="/login"/>
-        }
-        />
-      </Routes>
+<Route 
+  path='/'
+  element={
+    <Navigate to="/login"/>
+}
+/>
+</Routes>}
     </div>
   </div>
   );
